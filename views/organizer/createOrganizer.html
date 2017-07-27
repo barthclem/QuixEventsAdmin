@@ -1,0 +1,32 @@
+<div class="fadeIn animated">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <strong>Basic Form</strong>Elements
+                </div>
+                <div class="card-block">
+                    <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                        <div class="form-group row">
+                            <label class="col-md-3 form-control-label" for="organizerName" >Enter Your Organizer Name </label>
+                            <div class="col-md-9">
+                                <input type="text" id="organizerName"
+                                       name="organizerName"
+                                       class="form-control"
+                                       ng-model="$octrl.organizerName"
+                                       placeholder="organizer">
+                                <span class="help-block">only alphabets are allowed </span>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button type="button" class="btn btn-sm btn-primary"
+                                    ng-click="$octrl.createOrganizer()"><i class="fa fa-dot-circle-o"></i> Enter</button>
+                        </div>
+
+                </div>
+
+        </div>
+            <!--/.col-->
+        </div>
+    </div>
+</div>

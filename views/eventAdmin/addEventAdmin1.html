@@ -1,0 +1,60 @@
+<div class="fadeIn animated">
+    <div class="row" ng-show=" $eactrl.enterUsername">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <strong>Basic Form</strong>Elements
+                </div>
+                <div class="card-block">
+                    <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                        <div class="form-group row">
+                            <label class="col-md-3 form-control-label" for="eventAdminName" >Enter the Username </label>
+                            <div class="col-md-9">
+                                <input type="text"
+                                       ng-model="$eactrl.username"
+                                       id="eventAdminName"
+                                       name="eventAdminName"
+                                       class="form-control"
+                                       valid-name=""
+                                       placeholder="Username"
+                                       required
+                                >
+                                <span class="help-block">enter a valid username </span>
+                            </div>
+                        </div>
+                <div class="card-footer">
+                    <button type="button" ng-click="$eactrl.fetchUser()" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Enter</button>
+                </div>
+
+            </div>
+
+        </div>
+        <!--/.col-->
+    </div>
+        <div class="col-md-6" ng-include="'./addEventAdmin2.html'"></div>
+    </div>
+    <div class="row" ng-show=" !$eactrl.enterUsername">
+        <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="../../img/avatars/6.jpg"
+                                                             class="img-circle img-responsive"> </div>
+        <div class=" col-md-9 col-lg-9 ">
+            <table class="table table-user-information">
+                <tbody>
+                <tr>
+                    <td>Full Name </td>
+                    <td>{{$eactrl.userDetails.name}}</td>
+                </tr>
+                <tr>
+                    <td>Username</td>
+                    <td>{{$eactrl.userDetails.username}}</td>
+                </tr>
+
+
+                </tbody>
+            </table>
+            <div class="col-md-offset-4 col-lg-offset-4 col-md-5  col-lg-5 ">
+                <a href="#" class="btn btn-primary" ng-click="$eactrl.addEventAdmin()">Add as EventAdmin</a>
+            </div>
+
+        </div>
+    </div>
+</div>

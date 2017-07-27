@@ -1,0 +1,48 @@
+<div class="animated fadeIn">
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <i class="fa fa-align-justify"></i>List of Event Admins
+            </div>
+            <div class="card-block">
+                <table class="table table-bordered table-striped table-sm">
+                    <thead>
+                    <tr>
+                        <th class="text-center">Photos</th>
+                        <th class="text-center">Name</th>
+                        <th class="text-center">Event</th>
+                        <th class="text-center">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="eventAdmin in $eactrl.eventAdmins">
+                        <td class="text-center"><img src="../../img/avatars/1.jpg" class="img-avatar"></td>
+                        <td class="text-center">{{eventAdmin.name}}</td>
+                        <td class="text-center">{{eventAdmin.eventTitle}}</td>
+                        <td class="text-center">
+                            <div class="btn-group">
+                                <a class="btn btn-outline-primary" data-placement="top" data-toggle="tooltip" data-original-title="view">
+                                    <i class="fa fa-eye"></i>
+                                </a>
+                                <a class="btn btn-outline-success" data-placement="top" data-toggle="tooltip" data-original-title="edit">
+                                    <i class="fa fa-pencil"></i>
+                                </a>
+                                <a class="btn btn-outline-danger" data-placement="top" data-toggle="tooltip" data-original-title="delete">
+                                    <i class="fa fa-times"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer card-accent-secondary"><a
+                    class="btn btn-secondary offset-md-9"
+                    ui-sref="app.addEventAdmin({eventId: $eactrl.eventId})">
+                <i class="fa fa-plus append-icon"></i> Add New EventAdmin </a> </div>
+        </div>
+    </div>
+    <!--/.col-->
+</div>
+</div>

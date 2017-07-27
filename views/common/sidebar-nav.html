@@ -1,0 +1,40 @@
+<div class="sidebar" ng-controller="EventController as $ectrl" >
+    <nav class="sidebar-nav">
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" ui-sref-active="active"  ng-click="$ectrl.loadAllEvents()" ui-sref="app.main">
+                    <i class="icon-speedometer"></i> All Events <span class="badge badge-info">NEW</span></a>
+            </li>
+
+            <li class="divider"></li>
+            <li class="nav-title">
+                Quix Options
+            </li>
+            <li class="nav-item nav-dropdown" ng-show="$ectrl.userRoleChecker('organizer')"
+                ng-class="{open: $state.includes('app.events')}">
+                <a class="nav-link nav-dropdown-toggle" ng-class="{active: $state.includes('app.events')}"
+                   ng-click="$ectrl.getAllEventsByOrganizer()" href="#">
+                    <i class="icon-puzzle"></i> Organized By</a>
+                <ul class="nav-dropdown-items">
+                    <li class="nav-item">
+                        <a class="nav-link" ui-sref-active="active" ui-sref="app.events.organizer({mode : 'organizer'})" ng-click="$ectrl.getAllEventsByOrganizer()">
+                            <i class="icon-puzzle"></i> All MyEvents</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" ui-sref-active="active" ui-sref="app.events.eventAdmin" ng-click="$ectrl.getAllEventsByEventAdmin()">
+                            <i class="icon-puzzle"></i> My EventAdmins</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item" ng-show="$ectrl.userRoleChecker('event_admin')">
+                <a class="nav-link" ui-sref-active="active" ui-sref="app.events.eventAdmin({mode : 'event_admin'})" ng-click="$ectrl.getAllEventsByEventAdmin()">
+                    <i class="icon-calculator"></i> Admin Events <span class="badge badge-info">NEW</span></a>
+            </li>
+            <li class="nav-item" ng-show="$ectrl.userRoleChecker('participant')">
+                <a class="nav-link" ui-sref-active="active" ui-sref="app.widgets" ng-click="$ectrl.getAllEventsByParticipant()">
+                    <i class="icon-calculator"></i> Participating Events <span class="badge badge-info">NEW</span></a>
+            </li>
+
+        </ul>
+    </nav>
+</div>

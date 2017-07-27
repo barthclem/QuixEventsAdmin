@@ -1,0 +1,102 @@
+<!--
+ * CoreUI - Open Source Bootstrap Admin Template
+ * @version v1.0.0-alpha.6
+ * @link http://coreui.io
+ * Copyright (c) 2017 creativeLabs Łukasz Holeczek
+ * @license MIT
+ -->
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
+    <meta name="author" content="Łukasz Holeczek">
+    <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,AngularJS,Angular,Angular2,Angular 2,Angular4,Angular 4,jQuery,CSS,HTML,RWD,Dashboard,React,React.js,Vue,Vue.js">
+    <link rel="shortcut icon" href="img/favicon.png">
+
+    <title>Quix Event Admin</title>
+
+    <!-- Main styles for this application -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="bower_components/angular-moment-picker/dist/angular-moment-picker.min.css" rel="stylesheet">
+    <link href="bower_components/angular-ui-notification/dist/angular-ui-notification.min.css" rel="stylesheet">
+
+
+</head>
+
+
+<body class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden">
+
+    <!-- User Interface -->
+    <ui-view></ui-view>
+
+    <!-- Bootstrap and necessary plugins -->
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/tether/dist/js/tether.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- AngularJS -->
+    <script src="bower_components/angular/angular.min.js"></script>
+
+    <!-- AngularJS plugins -->
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="bower_components/oclazyload/dist/ocLazyLoad.min.js"></script>
+    <script src="bower_components/angular-breadcrumb/dist/angular-breadcrumb.min.js"></script>
+    <script src="bower_components/angular-loading-bar/build/loading-bar.min.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.min.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.min.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.min.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+    <script src="bower_components/angular-ngStorage/angular-ngStorage.min.js"></script>
+    <script src="bower_components/moment/min/moment-with-locales.min.js"></script>
+    <script src="bower_components/moment/min/moment.min.js"></script>
+    <script src="bower_components/angular-moment/angular-moment.min.js"></script>
+    <script src="bower_components/angular-moment-picker/dist/angular-moment-picker.min.js"></script>
+    <script src="bower_components/angular-ui-notification/dist/angular-ui-notification.min.js"></script>
+
+
+    <!-- AngularJS CoreUI App scripts -->
+
+    <script src="js/app.js"></script>
+
+    <script src="js/routes.js"></script>
+
+    <script src="js/demo/routes.js"></script>
+
+    <script src="js/controllers.js"></script>
+    <script src="js/directives.js"></script>
+
+
+    //custom Services
+    <script src="js/services/LoginService.js"></script>
+    <script src="js/services/organizerService.js"></script>
+    <script src="js/services/EventService.js"></script>
+    <script src="js/services/eventAdminService.js"></script>
+    <script src="js/services/cookieService.js"></script>
+    <script src="js/services/navService.js"></script>
+    <script src="js/services/registerUser.js"></script>
+    <script src="js/services/uploadService.js"></script>
+    <script src="js/services/categoryService.js"></script>
+    <script src="js/services/categoryEntryService.js"></script>
+    //custom Controller
+    <script src="js/controllers/LoginCtrl.js"></script>
+    <script src="js/controllers/SignUpCtrl.js"></script>
+    <script src="js/controllers/organizerController.js"></script>
+    <script src="js/controllers/categoryEntryController.js"></script>
+    <script src="js/controllers/eventCtrl.js"></script>
+    <script src="js/controllers/eventAdminCtrl.js"></script>
+    <script src="js/controllers/categoryController.js"></script>
+    //custom directives
+   <script src="js/directives/confirmDirective.js"></script>
+   <script src="js/directives/nameFormDiv.js"></script>
+   <script src="js/directives/notification.js"></script>
+   <script src="js/directives/regDataExists.js"></script>
+   <script src="js/directives/uploadDirective.js"></script>
+
+</body>
+
+</html>

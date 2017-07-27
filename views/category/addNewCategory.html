@@ -1,0 +1,94 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-md-10 align-content-lg-center col-lg-8">
+            <div class="card">
+                <div class="card-header">
+                    <strong>Create</strong>Category
+                </div>
+                <div class="card-block">
+                    <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                        <div class="form-group row">
+                            <label class="col-md-3 form-control-label" for="categoryName" >Category Name : </label>
+                            <div class="col-md-9">
+                                <input type="text"
+                                       ng-model="$cctrl.categoryTitle"
+                                       id="categoryName"
+                                       name="categoryName"
+                                       class="form-control"
+                                       placeholder="Category Name">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 form-control-label" for="questionDuration">Question Time: </label>
+                            <div class="col-md-9">
+                                <input type="text"
+                                       ng-model="$cctrl.questionDuration"
+                                       id="questionDuration"
+                                       name="questionDuration"
+                                       class="form-control"
+                                       value = "45 secs"
+                                       placeholder="45 secs">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 form-control-label" for="select">Question Mark</label>
+                            <div class="col-md-9">
+                                <select id="questionMark"
+                                        ng-model="$cctrl.questionMark"
+                                        name="select"
+                                        class="form-control form-control-sm">
+                                    <option value="5">5</option>
+                                    <option value="7">7</option>
+                                    <option value="10">10</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 form-control-label">Enable Bonus</label>
+                            <div class="col-md-3">
+                                <label class="radio-inline" for="enableBonus">
+                                    <input type="checkbox"
+                                           ng-model="$cctrl.enableBonus"
+                                           id="enableBonus"
+                                           name="enableBonus"
+                                           value="enableBonus">yes
+                                </label>
+
+                            </div>
+                        </div>
+                        <div class="form-group row" ng-show="$cctrl.enableBonus">
+                            <label class="col-md-3 form-control-label" for="bonusDuration">Bonus Time: </label>
+                            <div class="col-md-9">
+                                <input type="text"
+                                       ng-model="$cctrl.bonusDuration"
+                                       id="bonusDuration"
+                                       name="bonusDuration"
+                                       class="form-control"
+                                       value = "45 secs"
+                                       placeholder="45 secs">
+                            </div>
+                        </div>
+                        <div class="form-group row" ng-show="$cctrl.enableBonus">
+                            <label class="col-md-3 form-control-label" for="bonusMark">Bonus Mark</label>
+                            <div class="col-md-9">
+                                <select id="bonusMark"
+                                        ng-model="$cctrl.bonusMark"
+                                        name="bonusMark"
+                                        class="form-control form-control-sm">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="2.5">2.5</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <button type="button" class="btn btn-sm btn-primary" ng-click="$cctrl.createCategory()"><i class="fa fa-dot-circle-o"></i> Submit</button>
+                </div>
+            </div>
+
+        </div>
+        <!--/.col-->
+    </div>
+</div>

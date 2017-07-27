@@ -1,0 +1,158 @@
+<div class="animated fadeIn">
+
+    <div class="card-group">
+        <div class="card">
+            <div class="card-block">
+                <div class="h1 text-muted text-right mb-4">
+                    <i class="icon-people"></i>
+                </div>
+                <div class="h4 mb-0">1</div>
+                <small class="text-muted text-uppercase font-weight-bold">Event Admin</small>
+                <div class="progress progress-xs mt-3 mb-0">
+                    <div class="progress-bar bg-info" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-block">
+                <div class="h1 text-muted text-right mb-4">
+                    <i class="icon-basket"></i>
+                </div>
+                <div class="h4 mb-0">{{$cctrl.categoryEntries.length}}</div>
+                <small class="text-muted text-uppercase font-weight-bold">Category Entries</small>
+                <div class="progress progress-xs mt-3 mb-0">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-block">
+                <div class="h1 text-muted text-right mb-4">
+                    <i class="icon-magic-wand"></i>
+                </div>
+                <div class="h4 mb-0">{{$cctrl.questionMark}}</div>
+                <small class="text-muted text-uppercase font-weight-bold">Question Mark</small>
+                <div class="progress progress-xs mt-3 mb-0">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-block">
+                <div class="h1 text-muted text-right mb-4">
+                    <i class="icon-speedometer"></i>
+                </div>
+                <div class="h4 mb-0">{{$cctrl.questionDuration}} secs</div>
+                <small class="text-muted text-uppercase font-weight-bold">Question Time</small>
+                <div class="progress progress-xs mt-3 mb-0">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-block">
+                <div class="h1 text-muted text-right mb-4">
+                    <i class="icon-support"></i>
+                </div>
+                <div class="h4 mb-0">{{$cctrl.enableBonus}}</div>
+                <small class="text-muted text-uppercase font-weight-bold">Bonus Enabled</small>
+                <div class="progress progress-xs mt-3 mb-0">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-block">
+                <div class="h1 text-muted text-right mb-4">
+                    <i class="icon-magic-wand"></i>
+                </div>
+                <div class="h4 mb-0">{{$cctrl.bonusMark}}</div>
+                <small class="text-muted text-uppercase font-weight-bold">Bonus Mark</small>
+                <div class="progress progress-xs mt-3 mb-0">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-block">
+                <div class="h1 text-muted text-right mb-4">
+                    <i class="icon-speedometer"></i>
+                </div>
+                <div class="h4 mb-0">{{$cctrl.bonusDuration}} secs</div>
+                <small class="text-muted text-uppercase font-weight-bold">Bonus Time</small>
+                <div class="progress progress-xs mt-3 mb-0">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-block">
+                <div class="h1 text-muted text-right mb-4">
+                    <i class="icon-clock"></i>
+                </div>
+                <small class="text-muted text-uppercase font-weight-bold">Last Updated</small>
+                <div class="progress progress-xs mt-3 mb-0">
+                    <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6 col-md-6" ng-repeat="categoryEntry in $cctrl.categoryEntries">
+            <div class="card card-accent-primary">
+                <div class="card-header">
+                    Category Entry
+                </div>
+                <div class="card-block" >
+                    <table class="table">
+                        <tbody>
+                        <tr>
+                            <td>Question</td>
+                            <td>{{categoryEntry.question}}</td>
+                        </tr>
+                        <tr ng-show="categoryEntry.hasOptions">
+                            <td>Option A </td>
+                            <td> {{categoryEntry.optionA}}</td>
+                        </tr>
+                        <tr ng-show="categoryEntry.hasOptions">
+                            <td>Option B </td>
+                            <td>{{categoryEntry.optionB}}</td>
+                        </tr>
+                        <tr ng-show="categoryEntry.hasOptions">
+                            <td>Option C </td>
+                            <td>{{categoryEntry.optionC}}</td>
+                        </tr>
+                        <tr ng-show="categoryEntry.hasOptions">
+                            <td>Option D </td>
+                            <td>{{categoryEntry.optionD}}</td>
+                        </tr>
+                        <tr>
+                            <td>Answer</td>
+                            <td>{{categoryEntry.answer}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Edit</button>
+                    <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+       <div class="card">
+           <div class="card-footer">
+               <a type="button" class="btn btn-sm btn-success offset-md-10"
+                  ui-sref-active="active"
+                  ui-sref="app.createCategoryEntry({eventId : $cctrl.eventId, categoryId: $cctrl.categoryId})">Add a New Category Entry</a>
+           </div>
+       </div>
+    </div>
+
+    <!--/.row-->
+</div>

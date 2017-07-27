@@ -1,0 +1,163 @@
+<div class="animated fadeIn">
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    INFORMATION PER PERSON
+                </div>
+                <div class="card-block">
+                    <br/>
+                    <table class="table table-hover table-outline mb-0 hidden-sm-down">
+                        <thead class="thead-default">
+                        <tr>
+                            <th class="text-center"><i class="icon-people"></i>
+                            </th>
+                            <th>Participants of the Event</th>
+                            <th class="text-center">Country</th>
+                            <th>Usage</th>
+                            <th class="text-center">Payment Method</th>
+                            <th>Activity</th>
+                        </tr>
+                        </thead>
+                        <tbody ng-controller="usersTableCtrl">
+                        <tr ng-repeat="user in users">
+                            <td class="text-center">
+                                <div class="avatar">
+                                    <img ng-src="img/avatars/{{ user.avatar }}" class="img-avatar" alt="admin@bootstrapmaster.com">
+                                    <span class="avatar-status" ng-class="{ 'badge-success' : user.status == 'active',
+                    'badge-warning' : user.status == 'away',
+                    'badge-danger'  : user.status == 'busy',
+                    'badge-default' : user.status == 'offline' }"></span>
+                                </div>
+                            </td>
+                            <td>
+                                <div>{{ user.name }}</div>
+                                <div class="small text-muted">
+                                    <span ng-if="user.new == true">New</span>
+                                    <span ng-if="user.new == false">Recurring</span>
+                                    | Registered: {{ user.registered }}</div>
+                            </td>
+                            <td class="text-center">
+                                <img ng-src="img/flags/{{ user.flag }}" alt="{{ user.country }}" style="height:24px;">
+                            </td>
+                            <td>
+                                <div class="clearfix">
+                                    <div class="float-left">
+                                        <strong>{{ user.usage }}%</strong>
+                                    </div>
+                                    <div class="float-right">
+                                        <small class="text-muted">{{ user.period }}</small>
+                                    </div>
+                                </div>
+                                <div class="progress progress-xs">
+                                    <div class="progress-bar" ng-class="{ 'bg-info'    : user.usage <= 25,
+                      'bg-success' : user.usage > 25 && user.usage <= 50,
+                      'bg-warning' : user.usage > 50 && user.usage <= 75,
+                      'bg-danger'  : user.usage > 75 && user.usage <= 100 }" value="{{ user.usage }}" role="progressbar" style="width: {{ user.usage }}%" aria-valuenow="{{ user.usage }}" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </td>
+                            <td class="text-center">
+                                <i class="fa" ng-class="{ 'fa-cc-mastercard' : user.payment == 'mastercard',
+                    'fa-cc-visa' : user.payment == 'visa',
+                    'fa-cc-amex' : user.payment == 'amex',
+                    'fa-cc-diners-club' : user.payment == 'diners',
+                    'fa-cc-stripe' : user.payment == 'stripe',
+                    'fa-paypal' : user.payment == 'paypal',
+                    'fa-google-wallet' : user.payment == 'google' }" style="font-size:24px"></i>
+                            </td>
+                            <td>
+                                <div class="small text-muted">Last login</div>
+                                <strong>{{ user.activity }}</strong>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!--/.col-->
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa fa-align-justify"></i> Striped Table
+                </div>
+                <div class="card-block">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Event Title</th>
+                            <th>Event Date</th>
+                            <th>Organizer</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>Yiorgos Avraamu</td>
+                            <td>2012/01/01</td>
+                            <td>Member</td>
+                            <td>
+                                <span class="badge badge-success">Active</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Avram Tarasios</td>
+                            <td>2012/02/01</td>
+                            <td>Staff</td>
+                            <td>
+                                <span class="badge badge-danger">Banned</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Quintin Ed</td>
+                            <td>2012/02/01</td>
+                            <td>Admin</td>
+                            <td>
+                                <span class="badge badge-default">Inactive</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Enéas Kwadwo</td>
+                            <td>2012/03/01</td>
+                            <td>Member</td>
+                            <td>
+                                <span class="badge badge-warning">Pending</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Agapetus Tadeáš</td>
+                            <td>2012/01/21</td>
+                            <td>Staff</td>
+                            <td>
+                                <span class="badge badge-success">Active</span>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <ul class="pagination">
+                        <li class="page-item"><a class="page-link" href="#">Prev</a>
+                        </li>
+                        <li class="page-item active">
+                            <a class="page-link" href="#">1</a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">2</a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">3</a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">4</a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">Next</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/.row-->
+
+</div>

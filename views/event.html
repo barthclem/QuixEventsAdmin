@@ -1,0 +1,92 @@
+<div class="animated fadeIn">
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    All Events Information Table
+                </div>
+                <div class="card-block">
+                    <br/>
+                    <table class="table table-hover table-outline mb-0 hidden-sm-down">
+                        <thead class="thead-default">
+                            <tr>
+                                <th class="text-center">S/N</th>
+                                <th  class="text-center">Event Title</th>
+                                <th class="text-center">Country</th>
+                                <th>Event CountDown</th>
+                                <th class="text-center">Organizer</th>
+                                <th class="text-center">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="event in $ectrl.events track by $index">
+                                <td class="text-center">
+                                    {{ $index+1 }}
+                                </td>
+                                <td class="text-center">
+                                    <div>{{ event.title }}</div>
+                                </td>
+                                <td class="text-center">
+                                    <img ng-src="img/flags/{{ event.flag }}" alt="{{ event.country }}" style="height:24px;">
+                                </td>
+                                <td>
+                                    <div class="clearfix">
+                                        <div class="float-left">
+                                            <strong>{{ event.countDown }}%</strong>
+                                        </div>
+                                        <div class="float-right">
+                                            <small class="text-muted">{{ event.period }}</small>
+                                        </div>
+                                    </div>
+                                    <div class="progress progress-xs">
+                                        <div class="progress-bar" ng-class="{ 'bg-info'    : event.countDown <= 25,
+                      'bg-success' : event.countDown > 25 && event.countDown <= 50,
+                      'bg-warning' : event.countDown > 50 && event.countDown <= 75,
+                      'bg-danger'  :  event.countDown > 75 &&  event.countDown <= 100 }" value="{{  event.countDown }}" role="progressbar"
+                                             style="width: {{ event.countDown }}%" aria-valuenow="{{ event.countDown }}" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </td>
+                                <td class="text-center">
+                                    <i class="fa" ng-class="{ 'fa-cc-mastercard' : event.organizer == 'mastercard',
+                    'fa-cc-visa' : event.organizer == 'visa',
+                    'fa-cc-amex' : event.organizer == 'amex',
+                    'fa-cc-diners-club' : event.organizer == 'diners',
+                    'fa-cc-stripe' :event.organizer == 'stripe',
+                    'fa-paypal' : event.organizer == 'paypal',
+                    'fa-google-wallet' : event.organizer == 'google' }" style="font-size:24px"></i>
+                                </td>
+                                <td class="text-center">
+                                    <!--<div class="small text-muted">Last login</div>-->
+                                    <!--<strong>{{ user.activity }}</strong>-->
+                                    <div class="btn btn-group-sm">
+                                        <div class="btn btn-primary btn-sm"
+                                             ng-click="$ectrl.registerForEvent()"
+                                             ng-show="$ectrl.activeModeIs('general')"
+                                        >Register</div>
+                                        <div class="btn btn-danger btn-sm"
+                                             ui-sref="app.eventDetail({mode: $ectrl.currentMode, id : event.id})"
+                                             ui-sref-active="active">View</div>
+                                        <div class="btn btn-danger btn-sm" ng-show="$ectrl.activeModeIs('organizer')">Delete</div>
+                                    </div>
+
+                                </td>
+                            </tr>
+                        <tr>
+                            <td></td><td></td><td></td><td></td><td></td>
+                            <td class="text-center" ng-show="$ectrl.activeModeIs('organizer')">
+                                <a class="btn btn-secondary btn-sm"  ui-sref-active="active" ui-sref="app.createEvent">Add New Event</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+        <!--/.col-->
+    </div>
+
+
+</div>

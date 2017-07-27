@@ -1,0 +1,129 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <strong>Category Entries</strong>
+                </div>
+                <div class="card-block">
+                    <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                        <div class="form-group row">
+                            <label class="col-md-3 form-control-label" for="question" >Question </label>
+                            <div class="col-md-9">
+                                <input type="text"
+                                       id="question"
+                                       name="question"
+                                       ng-model="$cectrl.question"
+                                       class="form-control"
+                                       placeholder="Category Name">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 form-control-label" for="answer" >Answer </label>
+                            <div class="col-md-9">
+                                <input type="text"
+                                       id="answer"
+                                       name="question"
+                                       ng-model="$cectrl.answer"
+                                       class="form-control"
+                                       placeholder="Category Name">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 form-control-label">Has Option</label>
+                            <div class="col-md-9">
+                                <label class="radio-inline" for="hasOption">
+                                    <input type="checkbox"
+                                           id="hasOption"
+                                           ng-model="$cectrl.hasOption"
+                                           name="disableOption"
+                                           value="disableOption">
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group row" ng-show="$cectrl.hasOption">
+                            <label class="col-md-3 form-control-label" for="optionA">Option A</label>
+                            <div class="col-md-9">
+                                <input type="text"
+                                       id="optionA"
+                                       name="optionA"
+                                       ng-model="$cectrl.optionA"
+                                       class="form-control"
+                                       placeholder="Enter Option A">
+                            </div>
+                        </div>
+                        <div class="form-group row" ng-show="$cectrl.hasOption">
+                            <label class="col-md-3 form-control-label" for="optionB">Option B </label>
+                            <div class="col-md-9">
+                                <input type="text"
+                                       id="optionB"
+                                       name="optionB"
+                                       ng-model = "$cectrl.optionB"
+                                       class="form-control"
+                                       placeholder="Enter Option B">
+                            </div>
+                        </div>
+                        <div class="form-group row" ng-show="$cectrl.hasOption">
+                            <label class="col-md-3 form-control-label" for="optionC">Option C </label>
+                            <div class="col-md-9">
+                                <input type="text"
+                                       id="optionC"
+                                       name="optionC"
+                                       ng-model="$cectrl.optionC"
+                                       class="form-control"
+                                       placeholder="Enter Option C">
+                            </div>
+                        </div>
+                        <div class="form-group row" ng-show="$cectrl.hasOption">
+                            <label class="col-md-3 form-control-label" for="optionD">Option D </label>
+                            <div class="col-md-9">
+                                <input type="text"
+                                       id="optionD"
+                                       name="optionD"
+                                       ng-model="$cectrl.optionD"
+                                       class="form-control"
+                                       placeholder="Enter Option D">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 form-control-label">Enable Advanced Option</label>
+                            <div class="col-md-9">
+                                <div class="col-md-9">
+                                    <label class="radio-inline" for="enableAdvancedOption">
+                                        <input type="checkbox"
+                                               id="enableAdvancedOption"
+                                               ng-model="$cectrl.enableAdvancedOption"
+                                               name="enableAdvancedOption"
+                                               value="true">
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row" ng-show="$cectrl.enableAdvancedOption">
+                            <label class="col-md-3 form-control-label" for="timeAllowed">Question Time</label>
+                            <div class="col-md-9">
+                                <select
+                                        id="timeAllowed"
+                                        ng-model="$cectrl.timeAllowed"
+                                        name="select"
+                                        class="form-control form-control-sm">
+                                    <option value="25">25 secs</option>
+                                    <option value="30">30 secs</option>
+                                    <option value="45">45 secs</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <a type="button"
+                       class="btn btn-sm btn-primary"
+                    ng-click="$cectrl.createCategoryEntry()"><i class="fa fa-dot-circle-o"></i> Submit</a>
+                </div>
+            </div>
+
+        </div>
+        <!--/.col-->
+    </div>
+</div>
