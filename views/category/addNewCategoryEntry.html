@@ -6,7 +6,8 @@
                     <strong>Category Entries</strong>
                 </div>
                 <div class="card-block">
-                    <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                    <form action="" method="post" name="category_entry_form" enctype="multipart/form-data" class="form-horizontal">
+                        <div ng-show="!$cectrl.enableUploadStatus">
                         <div class="form-group row">
                             <label class="col-md-3 form-control-label" for="question" >Question </label>
                             <div class="col-md-9">
@@ -114,7 +115,30 @@
                                 </select>
                             </div>
                         </div>
+                        </div>
                     </form>
+                </div>
+                <a type="button" class="col-md-3 btn btn-sm btn-success" ng-click="$cectrl.enableFileUpload()"> Upload Entries</a>
+                <div class="jumbotron-hr" ng-show="$cectrl.enableUploadStatus">
+                <p>You can upload the questions in an excel sheet in xlsx or xls format.
+                    The columns should be question, answer, optionA, optionB, optionC, optionD and time</p>
+            </div>
+                <div class="form-group row" ng-show="$cectrl.enableUploadStatus">
+                    <label class="col-md-3 form-control-label" >Questions Upload</label>
+                    <div class="col-md-9">
+                        <input type="file"
+                               ngf-select=""
+                               ng-model="$cectrl.questionExcelFile"
+                               name="file"
+                               ngf-max-size="20MB"
+                        >
+                        <i ng-show="$cectrl.category_entry_form.file.$error.required">*required</i><br>
+                        <i ng-show="$cectrl.category_entry_form.file.$error.maxSize">File too large
+                            {{up.file.size / 1000000|number:1}}MB: max 20M</i>
+                        <button type="submit" class="btn btn-sm btn-primary" ng-click="$cectrl.uploadQuestion()">Upload Category Entries</button>
+                        <p>{{$cectrl.progress}}
+                        </p>
+                    </div>
                 </div>
                 <div class="card-footer">
                     <a type="button"

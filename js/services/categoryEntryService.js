@@ -35,11 +35,11 @@ function CategoryEntryService ($http, $localStorage) {
         let currentUser = $localStorage.currentUser;
         $http.defaults.headers.common.Authorization = 'Bearer ' + currentUser.token;
         data.updated_by = currentUser.userId;
-        console.log(`\n\ncategory create data => ${JSON.stringify(data)}`);
+        console.log(`\n\n index category create data => ${JSON.stringify(data)}`);
         return new Promise ( (resolve, reject) => {
             $http.put(`http://localhost:8000/api/categoryEntry/${categoryId}`, data)
                 .then((categoryEntryData) => {
-                    console.log(`\n\n\n updated categoryEntry with id ${categoryId} => ${JSON.stringify(categoryEntryData)}\n\n`);
+                    console.log(`\n\n\nindex updated categoryEntry with id ${categoryId} => ${JSON.stringify(categoryEntryData)}\n\n`);
                     if(categoryEntryData.data.status === 'success'){
                         return resolve(categoryEntryData.data.data);
                     }

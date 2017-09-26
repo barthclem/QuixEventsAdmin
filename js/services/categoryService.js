@@ -16,7 +16,6 @@ function CategoryService ($http, $localStorage) {
         return new Promise ( (resolve, reject) => {
             $http.get(`http://localhost:8000/api/event/cat/${eventId}`)
                 .then((categoryData) => {
-                console.log(`\n\n\nCategory data => ${JSON.stringify(categoryData)}\n\n`);
                 if(categoryData.data.status === 'success'){
                     return resolve(categoryData.data.data);
                 }
@@ -37,7 +36,6 @@ function CategoryService ($http, $localStorage) {
         return new Promise ( (resolve, reject) => {
             $http.get(`http://localhost:8000/api/category/${categoryId}`)
                 .then((categoryData) => {
-                    console.log(`\n\n\nCategory data => ${JSON.stringify(categoryData)}\n\n`);
                     if(categoryData.data.status === 'success'){
                         return resolve(categoryData.data.data);
                     }
@@ -60,8 +58,7 @@ function CategoryService ($http, $localStorage) {
         return new Promise ( (resolve, reject) => {
             $http.post('http://localhost:8000/api/category/', data)
                 .then((categoryData) => {
-                console.log(`\n\n\n created category data => ${JSON.stringify(categoryData)}\n\n`);
-                    if(categoryData.data.status === 'success'){
+                   if(categoryData.data.status === 'success'){
                         return resolve(categoryData.data.data);
                     }
                     else{
@@ -75,6 +72,25 @@ function CategoryService ($http, $localStorage) {
         });
     };
 
+    this.deleteCategoryEntry = function(categoryId) {
+        let currentUser = $localStorage.currentUser;
+        $http.defaults.headers.common.Authorization = 'Bearer ' + currentUser.token;
+        return new Promise ( (resolve, reject) => {
+            $http.delete(`http://localhost:8000/api/categoryEntry/${categoryId}`)
+                .then((categoryData) => {
+                    if(categoryData.data.status === 'success'){
+                        return resolve("deleted");
+                    }
+                    else{
+                        return resolve(false);
+                    }
+                })
+                .catch(error => {
+                    console.log(`\n\nCreate eventAdmin Error => ${JSON.stringify(error)}\n\n`);
+                    return reject(error);
+                })
+        });
+    };
 
 
 

@@ -1,5 +1,4 @@
 <div class="animated fadeIn">
-
     <div class="card-group">
         <div class="card">
             <div class="card-block">
@@ -99,60 +98,103 @@
             </div>
         </div>
     </div>
+    <div class="card">
+        <div class="card-block">
+           <div class="row">
+            <!--<form class="form-inline col-md-8">-->
+                <!--<div class="form-group">-->
+                    <!--<label >Search</label>-->
+                    <!--<input type="text" ng-model="$cctrl.catEntrySearch"  placeholder="Search">-->
+                <!--</div>-->
+            <!--</form>-->
+            <a type="button" class="btn btn-sm btn-success col-md-4"
+               ui-sref-active="active"
+               ui-sref="app.createCategoryEntry({eventId : $cctrl.eventId, categoryId: $cctrl.categoryId})">Add Category Entry</a>
+        </div>
+        </div>
+    </div>
 
     <div class="row">
-        <div class="col-sm-6 col-md-6" ng-repeat="categoryEntry in $cctrl.categoryEntries">
-            <div class="card card-accent-primary">
+        <div class="col-sm-6 col-md-6" dir-paginate="categoryEntry in $cctrl.categoryEntries | itemsPerPage: 4 track by $index "
+             current-page = "$cctrl.currentPage"
+             id="catEntry{{$index}}" ng-hide="!$cctrl.categoryEntries[$index]" >
+            <div class="card card-accent-primary" >
                 <div class="card-header">
                     Category Entry
                 </div>
-                <div class="card-block" >
+                <div class="card-block">
                     <table class="table">
                         <tbody>
                         <tr>
                             <td>Question</td>
-                            <td>{{categoryEntry.question}}</td>
+                            <td ng-show="$cctrl.editCurrentIndex != $index">{{categoryEntry.question}}</td>
+                            <td><input type="text"
+                                       ng-show="$cctrl.editCurrentIndex == $index"
+                                       ng-model="$cctrl.categoryEntry.question"></td>
                         </tr>
                         <tr ng-show="categoryEntry.hasOptions">
-                            <td>Option A </td>
-                            <td> {{categoryEntry.optionA}}</td>
+                            <td>Option A</td>
+                            <td ng-show="$cctrl.editCurrentIndex != $index"> {{categoryEntry.optionA}}</td>
+                            <td><input type="text"
+                                       ng-show="$cctrl.editCurrentIndex == $index"
+                                       ng-model="$cctrl.categoryEntry.optionA"></td>
                         </tr>
                         <tr ng-show="categoryEntry.hasOptions">
-                            <td>Option B </td>
-                            <td>{{categoryEntry.optionB}}</td>
+                            <td>Option B</td>
+                            <td ng-show="$cctrl.editCurrentIndex != $index">{{categoryEntry.optionB}}</td>
+                            <td><input type="text"
+                                       ng-show="$cctrl.editCurrentIndex == $index"
+                                       ng-model="$cctrl.categoryEntry.optionB"></td>
                         </tr>
                         <tr ng-show="categoryEntry.hasOptions">
-                            <td>Option C </td>
-                            <td>{{categoryEntry.optionC}}</td>
+                            <td>Option C</td>
+                            <td ng-show="$cctrl.editCurrentIndex != $index">{{categoryEntry.optionC}}</td>
+                            <td><input type="text"
+                                       ng-show="$cctrl.editCurrentIndex == $index"
+                                       ng-model="$cctrl.categoryEntry.optionC"></td>
                         </tr>
                         <tr ng-show="categoryEntry.hasOptions">
-                            <td>Option D </td>
-                            <td>{{categoryEntry.optionD}}</td>
+                            <td>Option D</td>
+                            <td ng-show="$cctrl.editCurrentIndex != $index">{{categoryEntry.optionD}}</td>
+                            <td><input type="text"
+                                       ng-show="$cctrl.editCurrentIndex == $index"
+                                       ng-model="$cctrl.categoryEntry.optionD"></td>
                         </tr>
                         <tr>
                             <td>Answer</td>
-                            <td>{{categoryEntry.answer}}</td>
+                            <td ng-show="$cctrl.editCurrentIndex != $index">{{categoryEntry.answer}}</td>
+                            <td><input type="text"
+                                       ng-show="$cctrl.editCurrentIndex == $index"
+                                       ng-model="$cctrl.categoryEntry.answer"></td>
                         </tr>
                         </tbody>
                     </table>
                 </div>
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Edit</button>
-                    <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Delete</button>
+                    <button type="submit" class="btn btn-sm btn-primary sweetAlert edit"
+                            ng-click="$cctrl.editCategoryEntry($index)">
+                        <i class="fa fa-dot-circle-o"></i> {{$cctrl.editCurrentIndex == $index? 'Save Changes' : 'Edit'}}
+                    </button>
+                    <button type="reset"
+                            class="btn btn-sm btn-danger sweetAlert-confirm"
+                            ng-click="$cctrl.deleteCategoryEntry($index)"
+                    ><i class="fa fa-ban"></i> Delete
+                    </button>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="row">
-       <div class="card">
-           <div class="card-footer">
-               <a type="button" class="btn btn-sm btn-success offset-md-10"
-                  ui-sref-active="active"
-                  ui-sref="app.createCategoryEntry({eventId : $cctrl.eventId, categoryId: $cctrl.categoryId})">Add a New Category Entry</a>
-           </div>
-       </div>
-    </div>
+        <div class="row">
+            <div class="offset-md-8">
+                <dir-pagination-controls
+                        max-size="5"
+                        direction-links="true"
+                        boundary-links="true">
+                </dir-pagination-controls>
+            </div>
+        </div>
 
-    <!--/.row-->
+    </div>|
+
+
 </div>

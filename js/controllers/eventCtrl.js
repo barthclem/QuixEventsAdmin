@@ -106,19 +106,47 @@ function EventController($stateParams, $localStorage, $location, eventService, m
     };
 
     _this.loadAllEvents = function () {
+        let promiseArray = [eventService.getParticipantsEvents(),
+            eventService.getEventAdminEvents(), eventService.getOrganizerEvents() ];
+
         eventService.getAllEvents()
             .then(eventList => {
-                _this.switchModeTo(general);
-                console.log('General Mode Activated');
-                for (let event in eventList) {
-                    event =  eventFormatter(eventList[event]);
-                    _this.events.push(event);
-                }
+
+                let usedEventId = new Set();
+                Promise.all(promiseArray)
+                    .then(result => {
+                        result.forEach(items => {
+                            for(let ith in items) {
+                                let item = items[`${ith}`];
+                                let eventId = item.event_id?item.event_id:item.id;
+                                usedEventId.add(eventId);
+                            }
+                        });
+                        return [...usedEventId];
+
+                    })
+                    .then(userEvents=> {
+                        _this.switchModeTo(general);
+                        console.log('General Mode Activated');
+                        for (let event in eventList) {
+                            event =  eventFormatter(eventList[event]);
+                            event.registered = userEvents.indexOf(event.id) > -1;
+                            _this.events.push(event);
+                        }
+
+                    })
+                    .catch(error => {
+                        console.log(`\n\n Caught promise error is => ${JSON.stringify(error)}`)
+                    });
+
+
 
             })
             .catch(error => {
                 console.log(`Error fetching all the events by an organizer => ${JSON.stringify(error)}`)
-            })
+            });
+
+
     };
 
     _this.getAllEventsByEventAdmin = function () {

@@ -13,7 +13,9 @@ var grayLightest =  '#f8f9fa';
 
 angular
 .module('app', ['ui.router', 'oc.lazyLoad', 'ncy-angular-breadcrumb', 'angular-loading-bar', 'ngMessages',
-    'ngCookies', 'ngResource', 'ngSanitize', 'ngStorage', 'moment-picker', 'angularMoment','ui-notification'])
+    'ngCookies', 'ngResource', 'ngSanitize', 'ngStorage', 'moment-picker', 'angularMoment','ui-notification',
+    'ngFileUpload', 'angularUtils.directives.dirPagination'])
+    .factory('SweetAlert', ['$rootScope', AppAlert])
 .config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
   cfpLoadingBarProvider.includeSpinner = false;
   cfpLoadingBarProvider.latencyThreshold = 1;
@@ -21,6 +23,46 @@ angular
    // .config([NotificationConfiguration])
 .run(['$rootScope', '$state', '$stateParams', '$location', '$localStorage',
     'LoginService','CookieService', 'NavService', 'Notification', FirstRun]);
+
+function AppAlert($rootScope) {
+    let swal = window.swal;
+    let self = {
+        swal: function ( arg1, arg2, arg3 ) {
+        $rootScope.$evalAsync(function(){
+            if( typeof(arg2) === 'function' ) {
+                swal( arg1, function(isConfirm){
+                    $rootScope.$evalAsync( function(){
+                        arg2(isConfirm);
+                    });
+                }, arg3 );
+            } else {
+                swal( arg1, arg2, arg3 );
+            }
+        });
+    },
+    success: function(title, message) {
+        $rootScope.$evalAsync(function(){
+            swal( title, message, 'success' );
+        });
+    },
+    error: function(title, message) {
+        $rootScope.$evalAsync(function(){
+            swal( title, message, 'error' );
+        });
+    },
+    warning: function(title, message) {
+        $rootScope.$evalAsync(function(){
+            swal( title, message, 'warning' );
+        });
+    },
+    info: function(title, message) {
+        $rootScope.$evalAsync(function(){
+            swal( title, message, 'info' );
+        });
+    }
+};
+    return self;
+}
 
 function FirstRun($rootScope, $state, $stateParams, $location, $localStorage, LoginService,
                   cookieService, navService, Notification) {

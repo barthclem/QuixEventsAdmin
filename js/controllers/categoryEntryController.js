@@ -4,8 +4,9 @@
 
 'use strict';
 
-angular.module('app').controller('CategoryEntryController', ['$stateParams', '$location','CategoryEntryService', 'moment', CategoryEntryController]);
-function CategoryEntryController($stateParams,  $location, categoryEntryService, moment) {
+angular.module('app').controller('CategoryEntryController', ['$stateParams', '$location','CategoryEntryService',
+'moment', 'Upload', 'Notification', '$localStorage', CategoryEntryController]);
+function CategoryEntryController($stateParams,  $location, categoryEntryService, moment, Upload , Notification,  $localStorage) {
 
     let _this = this;
     _this.question= '';
@@ -19,6 +20,9 @@ function CategoryEntryController($stateParams,  $location, categoryEntryService,
     _this.questionMark = 5;
     _this.enableBonus = false;
     _this.bonusMark = 3;
+
+
+    _this.enableUploadStatus = false;
 
 
 
@@ -44,6 +48,43 @@ function CategoryEntryController($stateParams,  $location, categoryEntryService,
             .catch(error => {
                 console.log(` Category Data Error => ${error}`);
             })
+    };
+
+    _this.enableFileUpload = function () {
+      _this.enableUploadStatus = !_this.enableUploadStatus;
+    };
+
+    _this.uploadQuestion = function () {
+        const categoryId = _this.categoryId;
+        let currentUser = $localStorage.currentUser;
+        Upload.upload({
+           url: `http://localhost:8000/api/categoryEntry/file/`,
+            data: {file: _this.questionExcelFile, categoryId: categoryId, userId: currentUser.userId}})
+            .then((res) => {
+                    if(res.data.status  === "success") {
+                        console.log("\n\nSuccessfully Uploaded the file\n\n");
+                        Notification('Success ' + res.config.data.file.name + 'uploaded. Response: ');
+                        $location.path(`/category/g/${_this.eventId}/${_this.categoryId}`);
+                    }
+                },
+              (res) => {
+                  if(res.data.status  === "success") {
+                      console.log("\n\nSuccessfully Uploaded the file\n\n");
+                      Notification('Success ' + res.config.data.file.name + 'uploaded. Response: ');
+                      $location.path(`/category/g/${_this.eventId}/${_this.categoryId}`);
+                  }
+                  else {
+                      console.log(`\n\n Upload error => ${JSON.stringify(res.data.data)} \n\n`);
+                      Notification('Error occurred please try the manual means while we fix the error');
+                  }
+                },
+                 (evt) => {
+                    console.log(evt);
+                    var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                    console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
+                    _this.progress = 'progress: ' + progressPercentage + '% '; // capture upload progress
+                }
+            )
     };
 
 
